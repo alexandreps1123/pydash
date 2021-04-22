@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from base.message import SSMessage
 from r2a.ir2a import IR2A
 from player.parser import *
 from base.whiteboard import Whiteboard
@@ -8,7 +7,7 @@ import time
 import statistics
 
 
-class DSS_Selection(IR2A):
+class R2ADynamicSegmentSizeSelection(IR2A):
 
     def __init__(self, id):
         IR2A.__init__(self, id)
