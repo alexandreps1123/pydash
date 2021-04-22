@@ -19,7 +19,7 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         # qi[1] = 91917bps
         self.throughputs = [91917]
         self.selected_qi = [91917]
-        self.request_time = 1.0
+        self.request_time = 0.0
 
 
     # quando 'request' tem que enviar a 'mensagem' pra baixo 'send_down(msg)'
