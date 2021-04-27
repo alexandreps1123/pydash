@@ -1,71 +1,28 @@
-# pyDash: A Framework Based Educational Tool for Adaptive Streaming Video Algorithms Study
-A Python Dash Project.
+# pyDash usando 'Dynamic Segment Size Selection' adaptado para qualidade de vídeo
 
-PyDash is a framework for the development of adaptive streaming video algorithms. It is a learning tool designed to abstract the networking communication details, allowing e-students to focus exclusively on developing and evaluating ABR protocols.
+Trabalho da disciplina Transmissão de Dados.
 
-# Who we are?
+Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 
-We are from the **Department of Computer Science** at the **University of Brasília (UnB)**, Brazil.
+## gráficos obtidos para traffic_shaping=L
 
-This project is leaded by [Prof. Dr. Marcos Caetano](mailto:mfcaetano@unb.br) and [Prof. Dr. Marcelo Marotta](mailto:marcelo.marotta@unb.br). 
+![playback](https://user-images.githubusercontent.com/55243078/116285057-238ddd00-a764-11eb-91c0-e99b99d008f7.png)
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116285147-3b656100-a764-11eb-8571-fe2412443716.png)
+![playback_qi](https://user-images.githubusercontent.com/55243078/116285165-3e605180-a764-11eb-98eb-132e8a204ede.png)
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116285172-402a1500-a764-11eb-84e8-9b193705cb2d.png)
+![throughput](https://user-images.githubusercontent.com/55243078/116285223-51732180-a764-11eb-845c-eff0990435ce.png)
 
-If you have any questions regarding the pyDash project, please drop us an email.
+## gráficos obtidos para traffic_shaping=M
+![playback](https://user-images.githubusercontent.com/55243078/116285253-589a2f80-a764-11eb-9ad3-ab69dc3a2177.png)
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116285266-5afc8980-a764-11eb-96d4-3d06762c9ad6.png)
+![playback_qi](https://user-images.githubusercontent.com/55243078/116285296-60f26a80-a764-11eb-882c-803296b9d5c7.png)
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116285310-6485f180-a764-11eb-9ee0-d1422195efcf.png)
+![throughput](https://user-images.githubusercontent.com/55243078/116285322-6780e200-a764-11eb-8b19-85f33b46dd11.png)
 
+## gráficos obtidos para traffic_shaping=H
 
-# Instalation Process
-
-## Pré-requisitos
-
-Para a utilização deste projeto é necessária a instalação dos seguintes pacotes python.
-
-```
-numpy matplotlib scipy seaborn
-```
-## Por onde eu começo?
-
-Existem algumas formas de você configurar o seu ambiente. Nesta seção iremos apresentar apenas uma das formas possíveis.
-
-* O primeiro passo é fazer o checkout do seu código. Utilizando um terminal, faça um clone do repositório.
-
-```
-git clone https://github.com/mfcaetano/pydash.git
-```
-
-Se você está fazendo uma das cadeiras de redes do Departamento de Computação da UnB, sugerimos que você não faça simplesmente o download do código. Clone o repositório pois atualizações desta ferramenta serão feitas para que novas funcionalidades sejam disponibilizadas para vocês.
-
-```
-python3 -m venv pydash/venv
-```
-
-* Entre no repositório
-
-```
-cd pydash
-```
-
-* O próximo passo é ativar o terminal e carregar as configurações python.
-
-```
-source venv/bin/activate
-```
-
-* Agora você precisa instalar as bibliotecas utilizadas pela ferramenta pyDash.
-```
-pip3 install numpy matplotlib scipy seaborn
-```
-
-Pronto! Para testar o código, basta executar:
-```
-python3 main.py
-```
-
-# Arquitetura 
-
-![Arquitetura](https://user-images.githubusercontent.com/4336448/98450304-85a54800-211a-11eb-93f7-fd4e60c46ed5.png)
-
-![Arquitetura_Servidor](https://user-images.githubusercontent.com/4336448/98450354-ea60a280-211a-11eb-9fd9-1f7e1ddc1f9c.png)
-
-![Arquitetura_Cliente](https://user-images.githubusercontent.com/4336448/98450355-ec2a6600-211a-11eb-9845-298b51f9801e.png)
-
-
-
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116285360-6e0f5980-a764-11eb-9b30-7fe971593e70.png)
+![playback_pauses](https://user-images.githubusercontent.com/55243078/116285377-7071b380-a764-11eb-9174-5e2dc377ef4d.png)
+![playback_qi](https://user-images.githubusercontent.com/55243078/116285394-736ca400-a764-11eb-837e-d9dd3a1f076c.png)
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116285412-76679480-a764-11eb-966e-31f4dfa0e747.png)
+![throughput](https://user-images.githubusercontent.com/55243078/116285444-7a93b200-a764-11eb-918a-8be7a1879d45.png)
