@@ -17,8 +17,8 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         self.qi = []
         self.throughputs = []
 
-        # q1[1] = 91917bps
-        self.selected_qi = [91917]
+        # q1[0] = 46980bps
+        self.selected_qi = [46980]
         self.request_time = 0.0
 
 
@@ -49,7 +49,7 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         #--------fazer o calculo da qualidade a ser pedida-------------
      
         # calcula a media simples do historico de vazao
-        media = statistics.mean(self.throughputs)
+        media = statistics.mean(self.throughputs[-50:])
 
         # calculo do sigma^2
         # somatorio de i = 1 ate m de (i/m)*|self.throughputs - media|
@@ -57,7 +57,7 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         # i eh o peso de cada vazao, a ultima vazao medida tem maior peso
         sigma_quadrado = 0.0
         m = len(self.throughputs)
-        for i, data in enumerate(self.throughputs):
+        for i, data in enumerate(self.throughputs[-50:]):
             sigma_quadrado += ((i+1)/m)*abs(data - media)
             
         # p pertence ao intervalo [0,1]
@@ -65,19 +65,25 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         p = media/(media+sigma_quadrado)
         
         # pegar a posicao da ultima qualidade selecionada dentro da lista de qualidades possiveis
-        last_qi = 0
+        last_qi_index = 0
         for i in range(len(self.qi)):
             if self.qi[i] == self.selected_qi[len(self.selected_qi) -1]:
-                last_qi = i
+                last_qi_index = i
                 
         # tau eh a 'disposicao' para diminuir a qualidade do video
-        # tau = (1 - p)*omega[max(0, last_qi - 1)]
+        # tau = (1 - p)*omega[max(0, last_qi_index - 1)]
         # em que omega eh uma lista de tamanho N com todas as qualidades possíveis
-        tau = (1 - p)*max(0, self.qi[last_qi-1])
+        if last_qi_index-1 < 0:
+            tau = (1 - p)*max(0, self.qi[last_qi_index])
+        else:
+            tau = (1 - p)*max(0, self.qi[last_qi_index-1])
 
         # teta eh a 'disposicao' para aumentar a qualidade do video
-        # teta = p*omega[min(N, last_qi + 1)]
-        teta = p*min(self.qi[19], self.qi[last_qi+1])
+        # teta = p*omega[min(N, last_qi_index + 1)]
+        if last_qi_index+1 > 19:
+            teta = p*min(self.qi[19], self.qi[last_qi_index])
+        else:
+            teta = p*min(self.qi[19], self.qi[last_qi_index+1])
 
         # new_qi = argmin(omega[i] - tau + teta)
         # ======================> NOTA
@@ -89,22 +95,50 @@ class R2ADynamicSegmentSizeSelection(IR2A):
             if (i - tau + teta) > 0:
                 new_qi.append(i - tau + teta)
         
-        # 
+        # adiciona a qualidade escolhida pelo algoritmo a lista
         for i in self.qi:
             if min(new_qi) > i:
                 self.selected_qi.append(i)
 
-        print('========================>')
-        playback_qi = self.whiteboard.get_playback_qi()
+
+        # pega o indice da qualidade selecionada pelo algoritmo
+        next_qi_index = 0
+        for i in range(len(self.qi)):
+            if self.qi[i] == self.selected_qi[len(self.selected_qi) -1]:
+                next_qi_index = i
+
+
+
         buffer_size = self.whiteboard.get_playback_buffer_size()
-        # time_playback = self.whiteboard.get_playback_segment_size_time_at_buffer()
-        if len(buffer_size) > 0:
-            print('buffer size = '+str(buffer_size[len(buffer_size)-1][1]))
-        if len(playback_qi) > 0:
-            print(' video QI = '+str(playback_qi))
-        print(self.selected_qi[len(self.selected_qi) - 1])
-        print('========================')
-        print('========================')
+
+        # buffer_size[0, 10]
+        if len(buffer_size) > 5 and 0 <= buffer_size[len(buffer_size)-1][1] <= 10:
+            self.selected_qi.append(self.qi[0])
+
+        # buffer_size[11, 30]
+        elif len(buffer_size) > 5 and  10 < buffer_size[len(buffer_size)-1][1] <= 30:
+            self.selected_qi.append(self.qi[next_qi_index])
+        
+        # buffer_size[31, 60]
+        elif len(buffer_size) > 5 and buffer_size[len(buffer_size)-1][1] > 30:
+            self.selected_qi.append(self.qi[19])
+
+        # len(buffer_size) <= 5
+        else:
+            self.selected_qi.append(self.qi[next_qi_index])
+
+
+        print('========================>')
+        # playback_qi = self.whiteboard.get_playback_qi()
+        # buffer_size = self.whiteboard.get_playback_buffer_size()
+        # print("playback buffer size -> "+str(buffer_size))
+        print("media -> "+str(media))
+        print("sigma_quadrado -> "+str(sigma_quadrado))
+        print("p -> "+str(p))
+        print("tau -> "+str(tau))
+        print("teta -> "+str(teta))
+        print("selected_qi -> "+str(self.selected_qi[len(self.selected_qi)-1]))
+        print('<========================')
 
         # adiciona a msg a qualidade a ser pedida
         msg.add_quality_id(self.selected_qi[len(self.selected_qi) - 1])
