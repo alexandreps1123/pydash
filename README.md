@@ -22,6 +22,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
   * Variance: 3.7
 
 ## gráficos obtidos para traffic_shaping=M
+
 ![playback](https://user-images.githubusercontent.com/55243078/116285253-589a2f80-a764-11eb-9ad3-ab69dc3a2177.png)
 ![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116285266-5afc8980-a764-11eb-96d4-3d06762c9ad6.png)
 ![playback_qi](https://user-images.githubusercontent.com/55243078/116285296-60f26a80-a764-11eb-882c-803296b9d5c7.png)
@@ -40,6 +41,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 
 ## gráficos obtidos para traffic_shaping=H
 
+![playback](https://user-images.githubusercontent.com/55243078/116287369-b3cd2180-a766-11eb-8368-30632b676842.png)
 ![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116285360-6e0f5980-a764-11eb-9b30-7fe971593e70.png)
 ![playback_pauses](https://user-images.githubusercontent.com/55243078/116285377-7071b380-a764-11eb-9174-5e2dc377ef4d.png)
 ![playback_qi](https://user-images.githubusercontent.com/55243078/116285394-736ca400-a764-11eb-837e-d9dd3a1f076c.png)
