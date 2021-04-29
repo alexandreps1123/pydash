@@ -34,6 +34,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 * Average QI distance: 0.16
   * Standard deviation: 1.42
   * Variance: 2.01
+* module R2ADynamicSegmentSizeSelection
 
 ## gráficos obtidos para traffic_shaping=M
 
@@ -66,6 +67,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 * Average QI distance: 1.14
   * Standard deviation: 2.66
   * Variance: 7.06
+* module R2ADynamicSegmentSizeSelection
 
 ## gráficos obtidos para traffic_shaping=H
 
@@ -104,3 +106,5 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 * Average QI distance: 0.0
   * Standard deviation: 0.08
   * Variance: 0.01
+* module R2ADynamicSegmentSizeSelection
+
