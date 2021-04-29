@@ -4,7 +4,7 @@ Trabalho da disciplina Transmissão de Dados.
 
 Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
 
-## gráficos obtidos para traffic_shaping=L
+## [r2adynamicsegmentsizeselection] Gráficos obtidos para traffic_shaping=L
 
 #### playback
 
@@ -36,7 +36,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
   * Variance: 2.01
 * module R2ADynamicSegmentSizeSelection
 
-## gráficos obtidos para traffic_shaping=M
+## [r2adynamicsegmentsizeselection] Gráficos obtidos para traffic_shaping=M
 
 #### playback
 
@@ -69,7 +69,7 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
   * Variance: 7.06
 * module R2ADynamicSegmentSizeSelection
 
-## gráficos obtidos para traffic_shaping=H
+## [r2adynamicsegmentsizeselection] Gráficos obtidos para traffic_shaping=H
 
 #### playback
 
@@ -108,3 +108,102 @@ Especificações gerais do projeto [aqui](https://github.com/mfcaetano/pydash).
   * Variance: 0.01
 * module R2ADynamicSegmentSizeSelection
 
+## [r2afixed] Gráficos obtidos para traffic_shaping=L, qi = 0
+
+#### playback
+
+![playback](https://user-images.githubusercontent.com/55243078/116587839-3bdf3280-a8f1-11eb-91c9-951e0d9f7081.png)
+
+#### playback_buffer_size
+
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116587875-426daa00-a8f1-11eb-944c-c14ab3ae862b.png)
+
+#### playback_qi
+
+![playback_qi](https://user-images.githubusercontent.com/55243078/116587909-4dc0d580-a8f1-11eb-9b06-06be3a88ed07.png)
+
+
+#### playback_quality_qi
+
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116587926-52858980-a8f1-11eb-90a8-7a0bf59bb464.png)
+
+#### throughput
+
+![throughput](https://user-images.githubusercontent.com/55243078/116587934-574a3d80-a8f1-11eb-94d7-08057466c0fe.png)
+
+
+### Dados gerados ao final da execução da aplicação
+* Pauses number: 0
+* Average QI: 0.0
+  * Standard deviation: 0.0
+  * Variance: 0.0
+* Average QI distance: 0.0
+  * Standard deviation: 0.0
+  * Variance: 0.0
+* module R2AFixed
+
+## [r2arandom] Gráficos obtidos para traffic_shaping=L
+
+#### playback
+
+![playback](https://user-images.githubusercontent.com/55243078/116590355-07b94100-a8f4-11eb-92e1-bb5846c21716.png)
+
+#### playback_buffer_size
+
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116590371-0be55e80-a8f4-11eb-8122-018b53e693bb.png)
+
+#### playback_qi
+
+![playback_qi](https://user-images.githubusercontent.com/55243078/116590390-10aa1280-a8f4-11eb-89d6-ed499dcae4ca.png)
+
+#### playback_quality_qi
+
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116590404-16075d00-a8f4-11eb-80e9-48072cf1ddc5.png)
+
+#### throughput
+
+![throughput](https://user-images.githubusercontent.com/55243078/116590417-1b64a780-a8f4-11eb-86e9-091436cf74e3.png)
+
+
+
+### Dados gerados ao final da execução da aplicação
+* Pauses number: 0
+* Average QI: 9.44
+  * Standard deviation: 5.88
+  * Variance: 34.61
+* Average QI distance: 7.11
+  * Standard deviation: 4.87
+  * Variance: 23.7
+* module R2ARandom
+
+## [r2a_averagethroughput] Gráficos obtidos para traffic_shaping=L
+
+#### playback
+
+![playback](https://user-images.githubusercontent.com/55243078/116591641-7519a180-a8f5-11eb-9388-c498a7492c4d.png)
+
+#### playback_buffer_size
+
+![playback_buffer_size](https://user-images.githubusercontent.com/55243078/116591662-7cd94600-a8f5-11eb-9de2-f37242499b13.png)
+
+#### playback_qi
+
+![playback_qi](https://user-images.githubusercontent.com/55243078/116591678-81056380-a8f5-11eb-83c3-bc23f36ad583.png)
+
+#### playback_quality_qi
+
+![playback_quality_qi](https://user-images.githubusercontent.com/55243078/116591708-8c588f00-a8f5-11eb-9962-2f5699d2c9c1.png)
+
+#### throughput
+
+![throughput](https://user-images.githubusercontent.com/55243078/116591738-94183380-a8f5-11eb-8d6d-36757b61a9b9.png)
+
+### Dados gerados ao final da execução da aplicação
+* Pauses number: 0
+* Average QI: 13.96
+  * Standard deviation: 0.27
+  * Variance: 0.07
+* Average QI distance: 0.01
+  * Standard deviation: 0.14
+  * Variance: 0.02
+* module R2A_AverageThroughput
