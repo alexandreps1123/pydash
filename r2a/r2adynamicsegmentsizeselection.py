@@ -56,7 +56,7 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         # m eh o numero de vazoes medidas
         # i eh o peso de cada vazao, a ultima vazao medida tem maior peso
         sigma_quadrado = 0.0
-        m = len(self.throughputs)
+        m = len(self.throughputs[-50:])
         for i, data in enumerate(self.throughputs[-50:]):
             sigma_quadrado += ((i+1)/m)*abs(data - media)
             
