@@ -56,7 +56,7 @@ class R2ADynamicSegmentSizeSelection(IR2A):
         # m eh o numero de vazoes medidas
         # i eh o peso de cada vazao, a ultima vazao medida tem maior peso
         sigma_quadrado = 0.0
-        m = len(self.throughputs)
+        m = len(self.throughputs[-50:])
         for i, data in enumerate(self.throughputs[-50:]):
             sigma_quadrado += ((i+1)/m)*abs(data - media)
             
@@ -116,11 +116,11 @@ class R2ADynamicSegmentSizeSelection(IR2A):
             self.selected_qi.append(self.qi[0])
 
         # buffer_size[11, 30]
-        elif len(buffer_size) > 5 and  10 < buffer_size[len(buffer_size)-1][1] <= 30:
+        elif len(buffer_size) > 5 and  10 < buffer_size[len(buffer_size)-1][1] <= 50:
             self.selected_qi.append(self.qi[next_qi_index])
         
         # buffer_size[31, 60]
-        elif len(buffer_size) > 5 and buffer_size[len(buffer_size)-1][1] > 30:
+        elif len(buffer_size) > 5 and buffer_size[len(buffer_size)-1][1] > 50:
             self.selected_qi.append(self.qi[19])
 
         # len(buffer_size) <= 5
